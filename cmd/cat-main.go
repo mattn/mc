@@ -251,7 +251,7 @@ func catURL(ctx context.Context, sourceURL string, encKeyDB map[string][]prefixS
 				}
 			}
 
-			if client.GetURL().Type == objectStorage {
+			if content.Size != -1 && client.GetURL().Type == objectStorage {
 				size = content.Size - o.startO
 				if size < 0 {
 					err := probe.NewError(fmt.Errorf("specified offset (%d) bigger than file (%d)", o.startO, content.Size))
